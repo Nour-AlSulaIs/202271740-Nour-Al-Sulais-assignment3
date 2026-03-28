@@ -114,6 +114,11 @@ To enhance user interaction, several animations were added:
 - CSS `transition` is used to create smooth animations
 
 These animations provide visual feedback and make the interface feel more responsive and modern.
+Additionally, a temporary success message is displayed after form submission.
+
+- The message appears when the form is successfully submitted
+- It is automatically removed after a few seconds using JavaScript 
+- This prevents clutter and improves user experience
 
 ---
 
