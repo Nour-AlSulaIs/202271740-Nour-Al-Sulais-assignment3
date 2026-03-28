@@ -347,6 +347,60 @@ body.light-mode .about-container p {
 }
 
 
+/* Skills section layout */
+.skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Section heading */
+.skills h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+/* 3D scene container */
+#scene {
+  width: 460px;
+  height: 460px;
+  position: relative;
+  perspective: 900px;
+  cursor: pointer;
+}
+
+/* Sphere wrapper - preserves 3D for child tags */
+#sphere {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* Individual skill tag */
+.tag {
+  position: absolute;
+  top: 50%; left: 50%;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid;
+  user-select: none;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(.34,1.1,.64,1), opacity 0.5s ease;
+}
+
+/* Click hint text */
+#hint {
+  color: #555;
+  font-size: 13px;
+  margin-top: 1.5rem;
+}
+
 
 
 

@@ -13,6 +13,8 @@ I used ChatGPT as a learning and support tool throughout this assignment. It was
 - Understanding how to implement interactive features using JavaScript
 - Creating a "Show More / Show Less" functionality for projects
 - Handling form submission and displaying a success message
+- Fixing 3D transform inheritance issues where tags appeared tilted when paused
+- Refining the JavaScript animation loop using requestAnimationFrame and manual rotation math
 
 ChatGPT was primarily used for explanations, debugging guidance, and learning new techniques rather than automatically generating the entire project.
 

@@ -108,3 +108,127 @@ const emailInput = document.getElementById("email");
 emailInput.addEventListener("input", function () {
     emailInput.reportValidity();
 });
+
+const skills = [
+  { name: 'Python',     color: '#4B8BBE' },
+  { name: 'JavaScript', color: '#F7DF1E' },
+  { name: 'HTML',       color: '#E34F26' },
+  { name: 'CSS',        color: '#264DE4' },
+  { name: 'Java',       color: '#EA2D2E' },
+  { name: 'Next',       color: '#FA7343' },
+  { name: 'React',      color: '#61DAFB' },
+  { name: 'Flutter',    color: '#54C5F8' },
+  { name: 'Figma',      color: '#A259FF' },
+  { name: 'Git',        color: '#F05032' },
+  { name: 'SQL',        color: '#00758F' },
+  { name: 'C#',         color: '#9B4F96' },
+];
+
+// Get elements
+const sphere = document.getElementById('sphere');
+const hint   = document.getElementById('hint');
+const tags   = [];
+let spread   = false;
+let angle    = 0;
+let rafId    = null;
+
+// Calculate each skill's position on the sphere using Fibonacci distribution
+const sphPos = skills.map((s, i) => {
+  const phi   = Math.acos(1 - 2 * (i + 0.5) / skills.length);
+  const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+  const r = 160;
+  return {
+    x: r * Math.sin(phi) * Math.cos(theta),
+    y: r * Math.sin(phi) * Math.sin(theta),
+    z: r * Math.cos(phi),
+  };
+});
+
+// Calculate flat grid position for each skill when spread out
+function flatPos(i) {
+  const cols = 4, gapX = 105, gapY = 50;
+  const col  = i % cols;
+  const row  = Math.floor(i / cols);
+  const totalRows = Math.ceil(skills.length / cols);
+  return {
+    x: -((Math.min(cols, skills.length) - 1) * gapX) / 2 + col * gapX,
+    y: -((totalRows - 1) * gapY) / 2 + row * gapY,
+    z: 200,
+  };
+}
+
+// Create and style a tag element for each skill
+skills.forEach((s, i) => {
+  const tag = document.createElement('div');
+  tag.className   = 'tag';
+  tag.textContent = s.name;
+  tag.style.color       = s.color;
+  tag.style.borderColor = s.color + '55';
+  tag.style.background  = s.color + '11';
+  tag.style.textShadow  = `0 0 12px ${s.color}88`;
+  sphere.appendChild(tag);
+  tags.push(tag);
+});
+
+// Apply 3D rotation to each tag based on the current angle
+function applyOrbit() {
+  const rx = 15 * Math.PI / 180;
+  const ry = angle * Math.PI / 180;
+  const cosX = Math.cos(rx), sinX = Math.sin(rx);
+  const cosY = Math.cos(ry), sinY = Math.sin(ry);
+
+  tags.forEach((tag, i) => {
+    const p  = sphPos[i];
+
+    // Rotate around Y axis then X axis
+    const x1 = p.x * cosY + p.z * sinY;
+    const z1 = -p.x * sinY + p.z * cosY;
+    const y1 = p.y * cosX - z1 * sinX;
+    const z2 = p.y * sinX + z1 * cosX;
+
+    tag.style.transform = `translate(-50%,-50%) translate3d(${x1}px,${y1}px,${z2}px)`;
+
+    // Fade out tags that are behind the sphere
+    tag.style.opacity = Math.max(0.15, (z2 + 160) / 320).toFixed(2);
+  });
+}
+
+// Increment angle and keep the sphere spinning
+function animate() {
+  angle = (angle + 0.3) % 360;
+  applyOrbit();
+  rafId = requestAnimationFrame(animate);
+}
+
+animate();
+
+// Toggle between sphere and flat grid on click
+document.getElementById('scene').addEventListener('click', () => {
+  spread = !spread;
+
+  if (spread) {
+    // Stop rotation and spread tags to flat grid
+    cancelAnimationFrame(rafId);
+    hint.textContent = 'Click to go back';
+    tags.forEach((tag, i) => {
+      const fp = flatPos(i);
+      tag.style.transition = `transform 0.8s cubic-bezier(.34,1.1,.64,1) ${i * 30}ms, opacity 0.5s ease`;
+      tag.style.transform  = `translate(-50%,-50%) translate3d(${fp.x}px,${fp.y}px,${fp.z}px)`;
+      tag.style.opacity    = '1';
+    });
+  } else {
+    // Return tags to sphere and resume rotation
+    hint.textContent = 'Click to view all';
+    tags.forEach((tag, i) => {
+      tag.style.transition = `transform 0.8s cubic-bezier(.34,1.1,.64,1) ${i * 20}ms, opacity 0.5s ease`;
+    });
+
+    // Start spinning again after animation finishes
+    setTimeout(() => {
+      tags.forEach(tag => { tag.style.transition = 'none'; });
+      animate();
+    }, 900);
+
+    applyOrbit();
+  }
+});

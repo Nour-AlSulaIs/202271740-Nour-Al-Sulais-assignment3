@@ -121,8 +121,30 @@ Additionally, a temporary success message is displayed after form submission.
 - This prevents clutter and improves user experience
 
 ---
+## 9. Skills Section — 3D Rotating Sphere
 
-## 9. UI/UX Considerations
+A new Skills section was added to visually showcase the technologies used in the project.
+
+### How it works
+
+- Skill tags are distributed across a 3D sphere using Fibonacci sphere distribution for even spacing
+- The sphere rotates continuously using `requestAnimationFrame`
+- Rotation is calculated manually using math
+- Tags behind the sphere are faded out based on their Z position to create a depth effect
+
+### Click interaction
+
+- Clicking the sphere stops the rotation and animates all tags to a flat readable grid
+- Clicking again returns the tags to the sphere and resumes rotation
+- Tags animate with a staggered delay for a polished feel
+
+### Typing Animation 
+
+- A list of roles cycles automatically by typing out each role then deleting it
+- A blinking cursor is shown using a CSS animation
+
+
+## 10. UI/UX Considerations
 
 The design focuses on simplicity and usability:
 
@@ -135,7 +157,7 @@ The design focuses on simplicity and usability:
 
 ---
 
-## 10. Testing & Validation
+## 11. Testing & Validation
 
 The project was tested to ensure functionality and consistency:
 
@@ -147,7 +169,7 @@ The project was tested to ensure functionality and consistency:
 
 ---
 
-## 11. Future Improvements
+## 12. Future Improvements
 
 - Add accessibility improvements (ARIA labels, keyboard navigation)
 - Implement smoother animations (fade/slide effects)
