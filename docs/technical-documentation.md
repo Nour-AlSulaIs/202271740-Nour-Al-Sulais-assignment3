@@ -1,22 +1,22 @@
-# Technical Documentation
+# Technical Documentation – Assignment 3 
 
 ## 1. Project Overview
 
-This project is a responsive personal portfolio website developed using HTML, CSS, and JavaScript. The website demonstrates frontend development skills including layout structuring, responsive design, and theme switching functionality.
+This project is a responsive personal portfolio website developed using HTML, CSS, and JavaScript.
 
-In Assignment 2, additional interactive features and dynamic behaviors were implemented using JavaScript to enhance usability and user experience. These features allow users to interact with the content instead of only viewing it.
+In Assignment 3, the project was enhanced by adding advanced functionality, dynamic features, and improved user interaction. The goal was to demonstrate the use of external APIs, complex logic, and better state management.
 
 ---
 
 ## 2. Project Structure
 
-The project follows a clean and organized folder structure:
+The project follows a clean and organized structure:
 
-- HTML defines the structure and content of the website
-- CSS is used for styling, layout, and responsive design
-- JavaScript handles interactivity and dynamic behavior
-- Assets folder stores images and media files
-- Docs folder contains documentation files
+- **HTML** defines the structure and content of the website  
+- **CSS** handles styling, layout, and responsiveness  
+- **JavaScript** manages interactivity and dynamic behavior  
+- **Assets** folder contains images and media  
+- **Docs** folder includes documentation files  
 
 This structure improves maintainability and scalability.
 
@@ -24,174 +24,160 @@ This structure improves maintainability and scalability.
 
 ## 3. Technologies Used
 
-- HTML5
-- CSS3
-  - Flexbox (for layout alignment)
-  - CSS Grid (for project cards layout)
-  - Media Queries (for responsiveness)
-- JavaScript (for interactivity and DOM manipulation)
-- Responsive Design principles
+- HTML5  
+- CSS3  
+  - Flexbox (layout alignment)  
+  - CSS Grid (project cards layout)  
+  - Media Queries (responsive design)  
+- JavaScript  
+  - DOM manipulation  
+  - Event handling  
+  - Async/Await (API requests)  
+- Responsive Design principles  
 
 ---
 
 ## 4. Responsive Design Implementation
 
-The website is fully responsive and adapts to:
+The website adapts to different screen sizes:
 
-- Desktop screens
-- Tablet devices
-- Mobile devices
+- Desktop  
+- Tablet  
+- Mobile  
 
 Techniques used:
 
-- Flexbox for aligning sections (About, Contact)
-- CSS Grid for organizing project cards
-- Media queries to adjust layout and spacing for smaller screens
-- Max-width containers to maintain readable layouts
+- Flexbox for layout alignment (About, Contact sections)  
+- CSS Grid for organizing project cards  
+- Media queries for adjusting layout on smaller screens  
+- Max-width containers for better readability  
 
-Testing was performed using browser resizing and Chrome DevTools to ensure consistent behavior across different screen sizes.
-
----
-
-## 5. Dark/Light Mode Implementation
-
-Theme switching is implemented using JavaScript and CSS class toggling:
-
-- A button triggers a function that toggles a `light-mode` class on the `<body>` element
-- CSS overrides are defined inside `.light-mode` to change colors and backgrounds
-- `localStorage` is used to save the user's selected theme
-- When the page loads, the saved theme is applied automatically
-
-This ensures that user preferences are preserved and improves overall user experience.
+Testing was performed using browser resizing and DevTools.
 
 ---
 
-## 6. Interactive Features (Assignment 2)
+## 5. State Management (Dark/Light Mode)
 
-### Show More / Show Less (Projects Section)
+Theme switching is implemented using JavaScript:
 
-- Each project card contains two descriptions:
-  - A short preview (visible by default)
-  - A full description (hidden initially)
-- A button allows users to toggle between the two states
-- JavaScript is used to:
-  - Detect the current visibility of the content
-  - Show or hide the full description
-  - Update the button text dynamically ("Show More" / "Show Less")
+- A button toggles the `light-mode` class on the `<body>`  
+- CSS overrides define light mode styling  
+- `localStorage` stores the user's theme preference  
+- The saved theme is applied on page load  
 
-This feature allows users to control how much information they want to view and keeps the layout clean.
+This ensures a consistent user experience.
 
 ---
 
-## 7. Contact Form and User Feedback
+## 6. Interactive Features
+
+### Show More / Show Less
+
+- Each project includes:
+  - A short description (default)
+  - A full description (hidden)
+- A button toggles visibility using JavaScript  
+- Button text updates dynamically  
+
+This keeps the layout clean and interactive.
+
+---
+
+## 7. Contact Form and Validation
 
 The contact section includes:
 
-- Name input field
-- Email input field (type="email")
-- Message textarea
-- Submit button
+- Name input  
+- Email input (validated by browser)  
+- Message textarea  
+- Submit button  
 
-Validation and feedback:
+Functionality:
 
-- Required fields are enforced using HTML attributes (`required`)
-- Email format is validated automatically by the browser
-- JavaScript handles the form submission event
-- `event.preventDefault()` prevents page reload
-- A success message is displayed after submission
-- The form is reset after successful submission
-
-This ensures clear communication with the user and improves usability.
+- Required fields enforced using HTML validation  
+- JavaScript handles submission  
+- `event.preventDefault()` prevents page reload  
+- Success message is displayed  
+- Form resets after submission  
 
 ---
 
-## 8. Animations and Transitions
+## 8. API Integration — Advice Feature
 
-To enhance user interaction, several animations were added:
-
-- Project cards move slightly upward on hover using `transform: translateY()`
-- Buttons scale on hover and shrink slightly when clicked
-- CSS `transition` is used to create smooth animations
-
-These animations provide visual feedback and make the interface feel more responsive and modern.
-Additionally, a temporary success message is displayed after form submission.
-
-- The message appears when the form is successfully submitted
-- It is automatically removed after a few seconds using JavaScript 
-- This prevents clutter and improves user experience
-
----
-## 9. Skills Section — 3D Rotating Sphere
-
-A new Skills section was added to visually showcase the technologies used in the project.
+An external API was used to display dynamic content.
 
 ### How it works
 
-- Skill tags are distributed across a 3D sphere using Fibonacci sphere distribution for even spacing
-- The sphere rotates continuously using `requestAnimationFrame`
-- Rotation is calculated manually using math
-- Tags behind the sphere are faded out based on their Z position to create a depth effect
+- A request is sent using `fetch`  
+- The response is converted to JSON  
+- Advice text is extracted and displayed in the UI  
 
-### Click interaction
+### Error Handling
 
-- Clicking the sphere stops the rotation and animates all tags to a flat readable grid
-- Clicking again returns the tags to the sphere and resumes rotation
-- Tags animate with a staggered delay for a polished feel
+- If the API fails, a fallback message is shown  
+- Prevents application crashes  
 
-### Typing Animation 
-
-- A list of roles cycles automatically by typing out each role then deleting it
-- A blinking cursor is shown using a CSS animation
-
-
-## 10. UI/UX Considerations
-
-The design focuses on simplicity and usability:
-
-- Consistent spacing and alignment across all sections
-- Clear visual hierarchy using headings and typography
-- Minimal and controlled color palette
-- Responsive layout for different devices
-- Interactive elements improve user engagement
-- Content is organized and easy to navigate
+This demonstrates external API integration and dynamic updates.
 
 ---
 
-## 11. Testing & Validation
+## 9. Countdown Timer (Complex Logic)
 
-The project was tested to ensure functionality and consistency:
-
-- Tested across multiple screen sizes (desktop, tablet, mobile)
-- Verified responsive layout behavior using DevTools
-- Tested Dark/Light mode switching and persistence
-- Verified Show More / Show Less functionality
-- Tested contact form validation and success message display
-
----
-
-## 12. Future Improvements
-
-- Add accessibility improvements (ARIA labels, keyboard navigation)
-- Implement smoother animations (fade/slide effects)
-- Connect the contact form to a backend service
-- Add more interactive features (filtering or search)
-- Deploy the website using GitHub Pages
-
----
-## 10. API Integration — Dynamic Advice Feature
-
-A dynamic advice feature was added using an external API to enhance the website with real-time content.
+A graduation countdown timer was implemented.
 
 ### How it works
 
-- The application sends a request to the Advice API using `fetch`
-- The response is returned in JSON format
-- JavaScript extracts the advice text from the response
-- The content is displayed dynamically in the hero section
+- A future date is defined using JavaScript  
+- Current time is retrieved continuously  
+- The difference is calculated  
+- Converted into:
+  - Days
+  - Hours
+  - Minutes
+  - Seconds  
+- Updated every second using `setInterval`
 
-### Error handling
+### Logic
 
-- If the API request fails, a fallback message is displayed
-- This ensures the application remains stable even if external data is unavailable
+- Mathematical calculations convert milliseconds  
+- Condition checks when countdown ends  
 
-This feature demonstrates the ability to work with external APIs and dynamically update the user interface.
+This demonstrates advanced JavaScript logic.
+
+---
+
+## 10. Performance Optimization
+
+Basic performance improvements were applied:
+
+- Images use `loading="lazy"` for faster loading  
+- Unused code was removed  
+- Efficient CSS properties were used  
+- DOM access was optimized in JavaScript  
+
+These steps improve loading speed and efficiency.
+
+---
+
+## 11. UI/UX Considerations
+
+The design focuses on usability:
+
+- Clear layout and navigation  
+- Consistent spacing and alignment  
+- Interactive elements (buttons, API, countdown)  
+- Real-time updates improve engagement  
+- Responsive design ensures smooth experience  
+
+---
+
+## 12. Testing & Validation
+
+The project was tested to ensure functionality:
+
+- Responsive behavior across devices  
+- Dark/Light mode switching  
+- API data loading  
+- Countdown accuracy  
+- Form validation and feedback  
+ 

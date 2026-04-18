@@ -265,19 +265,11 @@ body.light-mode .card {
     font-size: 36px;
 }
 
-<<<<<<< HEAD
-=======
-/* FIXED PART */
->>>>>>> 281e9366567b2ec60589d7b53af12108e0b8942e
 #scene {
     width: 100%;
     max-width: 320px;
     height: 320px;
-<<<<<<< HEAD
     margin: 40px auto; 
-=======
-    margin: 40px auto; /* center */
->>>>>>> 281e9366567b2ec60589d7b53af12108e0b8942e
     position: relative;
     perspective: 900px;
     
