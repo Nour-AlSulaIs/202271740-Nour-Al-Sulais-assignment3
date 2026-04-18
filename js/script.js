@@ -234,3 +234,56 @@ document.getElementById('scene').addEventListener('click', () => {
   }
 });
 
+
+// Fetch advice from external API
+async function getQuote() {
+  try {
+    const response = await fetch('https://api.adviceslip.com/advice'); // request data
+    const data = await response.json(); // convert to JSON
+
+    // display advice on the page
+    document.getElementById('quote').textContent = "\u201c " + data.slip.advice + " \u201d";
+    document.getElementById('author').textContent = "- Advice";
+
+  } catch (error) {
+    document.getElementById('quote').textContent = "Error loading quote"; // handle error
+  }
+}
+
+
+// Countdown to graduation date
+function startCountdown() {
+
+  const graduationDate = new Date("2027-08-15 00:00:00").getTime(); // target date
+
+  // function to update countdown values
+  function updateCountdown() {
+
+    const now = new Date().getTime(); // current time
+    const distance = graduationDate - now; // time difference
+
+    // convert remaining time into units
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24)); // days left
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // hours left
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // minutes left
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000); // seconds left
+
+    // update UI
+    document.getElementById("days").textContent = days + " Days";
+    document.getElementById("hours").textContent = hours + " Hours";
+    document.getElementById("minutes").textContent = minutes + " Minutes";
+    document.getElementById("seconds").textContent = seconds + " Seconds";
+
+    // check if countdown finished
+    if (distance < 0) {
+      document.getElementById("countdown").textContent = "I Graduated!";
+    }
+  }
+
+  updateCountdown(); 
+  setInterval(updateCountdown, 1000); // update every second
+}
+
+// start features on page load
+startCountdown();
+getQuote();

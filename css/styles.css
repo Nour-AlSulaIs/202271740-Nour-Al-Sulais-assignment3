@@ -87,6 +87,40 @@ section {
 }
 
 
+/*  COUNTDOWN  */
+.countdown-section {
+    text-align: center;
+}
+
+.countdown-section h2 {
+    margin-bottom: 50px;
+    color: #d1d5db;
+    font-size: 36px;
+}
+
+#countdown {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#countdown p {
+    background: #1e1e2f;
+    width: 110px;
+    height: 110px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 600;
+    color: #9b87f5;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: transform 0.3s;
+}
 
 /*  PROJECTS  */
 .projects {
@@ -231,11 +265,19 @@ body.light-mode .card {
     font-size: 36px;
 }
 
+<<<<<<< HEAD
+=======
+/* FIXED PART */
+>>>>>>> 281e9366567b2ec60589d7b53af12108e0b8942e
 #scene {
     width: 100%;
     max-width: 320px;
     height: 320px;
+<<<<<<< HEAD
     margin: 40px auto; 
+=======
+    margin: 40px auto; /* center */
+>>>>>>> 281e9366567b2ec60589d7b53af12108e0b8942e
     position: relative;
     perspective: 900px;
     
